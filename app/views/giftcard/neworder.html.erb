@@ -1,0 +1,65 @@
+<body>
+<div class="container card col-sm-6 my-4 p-4">
+    <h2 class=" d-flex justify-content-center align-items-center ">Create New Order</h2>
+    <ul>
+        
+    </ul>
+
+    <div class="row">
+        <div class="mb-3 col-sm-6">
+            <label>Date: </label>
+            <%= Time.now.strftime("%F")%>
+        </div>
+    </div>
+
+    <%=form_with model: @giftcoupon, url: neworder_path do |form| %>
+        <%# <%= form.date_field :order_date, class: "form-control", id: :date,value: :date, hidden: true%>
+        <div class="row">
+            <div class="mb-3 col-sm-6">
+                <label>Recipient First Name</label>
+                <%= form.text_field :first_name, class: "form-control", placeholder: "First Name"%>
+            </div>
+            <div class="mb-3 col-sm-6">
+                <label>Recipient Last Name</label>
+                <%= form.text_field :last_name, class: "form-control", placeholder: "Last Name"%>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="mb-3 col-sm-6">
+                <label>Gift Card Value (INR)</label>
+                <%= form.number_field :gift_card_value, class: "form-control", placeholder: "Enter Amount", id: :val, onchange: "fun()"%>
+            </div>
+            <div class="mb-3 col-sm-6">
+                <label>Amount Payable (10% commission inclusive)</label>
+                <%= form.number_field :total_amount, step: 0.01, class: "form-control", placeholder: "Should Be Calculated", id: :res%>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-sm-6">
+                <label>Recipient Mobile Number</label>
+                <%= form.text_field :mobile_no, class: "form-control", placeholder: "Enter Mobile Number"%>
+            </div>
+            <div class="mb-3 col-sm-6">
+                <label>Recipient Address</label>
+                <%= form.text_field :address, class: "form-control", placeholder: "Enter Address"%>
+            </div>
+        </div>
+
+            <%# <%= form.date_field :order_date, class: "form-control", placeholder: "Enter Address"%>
+            <%# <%= form.text_field :status, class: "form-control", placeholder: "Enter Address"%> 
+        <div class="mb-3  d-flex justify-content-center align-items-center">
+            <%=form.submit "Place Order", class: "btn btn-success"%>
+        </div>
+    <%end%>
+</div>
+</body>
+<script>
+    function fun(){
+        num = document.getElementById("val").value;
+        result = parseFloat(num);
+        result = result * 0.1;
+        document.getElementById("res").value=result;
+    }
+</script>

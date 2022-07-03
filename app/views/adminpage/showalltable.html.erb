@@ -1,0 +1,32 @@
+<div class="container">
+    <h2 class="d-flex justify-content-center align-items-center m-4">Order History</h2>
+    <table class="table table-striped table-bordered table-hover  ">
+        <thead class="thead-dark">
+            <tr>
+                <th>Order Id</th>
+                <th>Recipient Name</th>
+                <th>Ordered Date</th>
+                <th>Gift card Value</th>
+                <th>Commission (10%)</th>
+                <th>Delivery Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% Giftcoupon.all.each do |giftcoupon|%>
+                    <tr>
+                        <td><%=giftcoupon.id%></td>
+                        <td><%=giftcoupon.first_name + " " + giftcoupon.last_name%></td>
+                        <td><%=giftcoupon.order_date%></td>
+                        <td><%=giftcoupon.gift_card_value%></td>
+                        <td><%=giftcoupon.total_amount%></td>
+                        <td><b><%=giftcoupon.status%></b></td>
+                        <td><a href="order/<%=giftcoupon.id%>/edit"class="btn btn-success">Mark Delivered</a></td>
+                    </tr>
+                
+            <%end%>
+        </tbody>
+
+    </table>
+
+</div>

@@ -1,0 +1,25 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+
+<div class="mb-3">
+    <%=form.label :confirm_Password%>
+    <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"%>
+</div>
+<div class="mb-3" >
+    <%=form.label :email%>
+    <%= form.text_field :email, class: "form-control", placeholder: "abc@example.com"%>
+</div>
+<div class="mb-3  d-flex justify-content-center align-items-center">
+    <%=form.submit "Register", class: "btn btn-success"%>
+</div>
